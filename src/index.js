@@ -3,38 +3,38 @@ import ReactDOM from "react-dom/client";
 
 import "./index.css";
 
-const firstBook = {
-  title: "Friends, Lovers, and the Big Terrible Thing: A Memoir",
-  author: "Matthew Perry",
-  img_src: "./images/book1.jpg",
-  img_alt: "Mathew Perry's memoir",
-};
-
-const secondBook = {
-  title: "The Woman in Me",
-  author: "Britney Spears ",
-  img_src: "https://m.media-amazon.com/images/I/61BWsc9eGbL._SY466_.jpg",
-  img_alt: "Britney Spears memoir",
-};
+const books = [
+  {
+    title: "Friends, Lovers, and the Big Terrible Thing: A Memoir",
+    author: "Matthew Perry",
+    img_src: "./images/book1.jpg",
+    img_alt: "Mathew Perry's memoir",
+    id: 1,
+  },
+  {
+    title: "The Woman in Me",
+    author: "Britney Spears ",
+    img_src: "https://m.media-amazon.com/images/I/61BWsc9eGbL._SY466_.jpg",
+    img_alt: "Britney Spears memoir",
+    id: 2,
+  },
+];
 
 const BookList = () => {
   return (
     <section className="booklist">
-      <Book
-        author={firstBook.author}
-        title={firstBook.title}
-        img_src={firstBook.img_src}
-        img_alt={firstBook.img_alt}
-      >
-        <p>Something lorem ipsum</p>
-        <button>Click me</button>
-      </Book>
-      <Book
-        author={secondBook.author}
-        title={secondBook.title}
-        img_src={secondBook.img_src}
-        img_alt={secondBook.img_alt}
-      />
+      {books.map((book) => {
+        const { author, title, img_src, img_alt, id } = book;
+        return (
+          <Book
+            key={id}
+            author={author}
+            title={title}
+            img_src={img_src}
+            img_alt={img_alt}
+          />
+        );
+      })}
     </section>
   );
 };
